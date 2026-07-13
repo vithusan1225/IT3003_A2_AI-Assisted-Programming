@@ -1,15 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
-
-
 // Interface
 interface LibraryOperations {
     void borrowBook(int bookId, int studentId);
     void returnBook(int bookId);
 }
-
-
 // Parent class (Inheritance)
 class Person {
     protected int id;
@@ -20,8 +16,6 @@ class Person {
         this.name = name;
     }
 }
-
-
 // Student inherits Person
 class Student extends Person {
 
@@ -37,8 +31,6 @@ class Student extends Person {
                 " | Borrowed Books: " + borrowedBooks.size());
     }
 }
-
-
 // Book class
 class Book {
 
@@ -53,30 +45,19 @@ class Book {
         this.author = author;
         this.available = true;
     }
-
-
     int getId() {
         return id;
     }
-
-
     String getTitle() {
         return title;
     }
-
-
     boolean isAvailable() {
         return available;
     }
-
-
     void setAvailability(boolean status) {
         available = status;
     }
-
-
     void display() {
-
         System.out.println(
                 "Book ID: " + id +
                 " | Title: " + title +
@@ -85,7 +66,6 @@ class Book {
         );
     }
 }
-
 
 // Library class
 class Library implements LibraryOperations {
@@ -110,8 +90,6 @@ class Library implements LibraryOperations {
         for(Book b : books)
             b.display();
     }
-
-
     void searchBook(String keyword){
 
         for(Book b : books){
@@ -124,18 +102,12 @@ class Library implements LibraryOperations {
             }
         }
     }
-
-
-
     void addStudent(Student student){
 
         students.add(student);
         System.out.println("Student registered successfully");
 
     }
-
-
-
     void viewStudents(){
 
         if(students.isEmpty()){
@@ -146,16 +118,11 @@ class Library implements LibraryOperations {
         for(Student s : students)
             s.display();
     }
-
-
-
     @Override
     public void borrowBook(int bookId, int studentId){
 
         Book selectedBook = null;
         Student selectedStudent = null;
-
-
         for(Book b : books){
 
             if(b.getId()==bookId)
@@ -168,16 +135,10 @@ class Library implements LibraryOperations {
             if(s.id==studentId)
                 selectedStudent=s;
         }
-
-
-
         if(selectedBook==null || selectedStudent==null){
             System.out.println("Invalid Book or Student ID");
             return;
         }
-
-
-
         if(selectedBook.isAvailable()){
 
             selectedBook.setAvailability(false);
@@ -197,10 +158,6 @@ class Library implements LibraryOperations {
         }
 
     }
-
-
-
-
     @Override
     public void returnBook(int bookId){
 
@@ -229,21 +186,13 @@ class Library implements LibraryOperations {
 
 }
 
-
-
-
 // Main class
 public class AI {
 
 
     public static void main(String[] args){
-
         Scanner sc = new Scanner(System.in);
-
         Library library = new Library();
-
-
-
         while(true){
 
             System.out.println("\n===== LIBRARY MANAGEMENT SYSTEM =====");
